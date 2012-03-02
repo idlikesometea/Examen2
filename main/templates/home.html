@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>Zombie Twitter</title>
+</head>
+<body>
+	<div>
+		140 caracteres desde ultratumba
+	</div>
+    <hr/>
+    {% for zombie in zombies %}
+    <div>
+    	<h3>{{ zombie.name }} - {{ zombie.cemetery}} -({{ zombie.twits.count }})twits</h3>
+    	 <a href="{% url show_twits zombie.id %}">ver mas</a>
+        <div>
+    		{{	twit.status }}
+    	</div>
+    	<div class="twits">
+    		{% for twit in zombie.twits.all %}
+    		<div>Twit de {{ zombie.name }}: {{ twit.status }} - {{ twit.created_at}}</div>
+    	{% endfor %}
+    	</div>
+    </div>
+    {% endfor %}
+</body>
+</html>
